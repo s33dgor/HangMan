@@ -99,28 +99,13 @@ def game(phrase):
         print('\nOOps!!! you lost, Better luck next time')
 
 
-def run_game():
-    game_init = init()
-    game_mode = game_init.mode
-    hardness = game_init.hardness
-    if game_mode == 'cpu':
-        movies_list = [movies.rstrip() for movies in open('Hangman_movies')]
-        phrase = choice(movies_list)
-        game(phrase)
-    else:
-        phrase = getpass('Give your phrase: ')
-        game(phrase)
-
-# run_game()
-
-
 def load_images(n: int, name: str, i: int = 0) -> list:
     images = []
     for image_index in range(n):
         if i != 0:
-            images.append(pygame.image.load(f'{name + str(image_index)}.png'))
+            images.append(pygame.image.load(f'./resources/imgs/{name + str(image_index)}.png'))
         else:
-            images.append(pygame.image.load(f'{name}.png'))
+            images.append(pygame.image.load(f'./resources/imgs/{name}.png'))
     return images
 
 
@@ -159,7 +144,7 @@ def selected_buttons(buttons: List[list], cor: List[int], var:str) -> str:
             pass
 
 def game():
-    movies_list = [movies.rstrip() for movies in open('Hangman_movies')]
+    movies_list = [movies.rstrip() for movies in open('./resources/Hangman_movies')]
     phrase = choice(movies_list)
     global p
     p = PhraseInstance(phrase)
